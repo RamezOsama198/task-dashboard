@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Admin Dashboard</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+
+  <!-- Vendor CSS (no JS yet) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="theme-light">
+  <!-- Loader -->
+  <div id="loader" class="loader-overlay hidden">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+  </div>
+
+  <!-- App Wrapper -->
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar animate__animated animate__fadeInLeft">
+      <div class="brand">
+        <i class="fa-solid fa-gauge-high"></i>
+        <span>Mini Admin</span>
+      </div>
+
+      <nav class="menu">
+        <a href="#" class="menu-item active" data-target="dashboard">
+          <i class="fa-solid fa-chart-pie"></i> Dashboard
+        </a>
+        <a href="#" class="menu-item" data-target="users">
+          <i class="fa-solid fa-users"></i> Users
+        </a>
+        <a href="#" class="menu-item" data-target="posts">
+          <i class="fa-solid fa-file-lines"></i> Posts
+        </a>
+        <a href="#" class="menu-item" data-target="favorites">
+          <i class="fa-solid fa-star"></i> Favorites
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <small>v1.0 • HTML/CSS</small>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <!-- Topbar -->
+      <header class="topbar animate__animated animate__fadeInDown">
+        <div class="left">
+          <button class="btn ghost" id="sidebarToggle" title="Toggle Sidebar">
+            <i class="fa-solid fa-bars-staggered"></i>
+          </button>
+          <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search..."/>
+          </div>
+        </div>
+        <div class="right">
+          <button class="btn ghost" id="themeToggle" title="Light/Dark Mode">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="section active animate__animated animate__fadeIn">
+        <h2>Dashboard</h2>
+        <div class="cards">
+          <div class="card stat">
+            <h3>Users</h3>
+            <p id="stat-users">0</p>
+          </div>
+          <div class="card stat">
+            <h3>Posts</h3>
+            <p id="stat-posts">0</p>
+          </div>
+          <div class="card stat">
+            <h3>Comments</h3>
+            <p id="stat-comments">0</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Users Section -->
+      <section id="users" class="section animate__animated animate__fadeIn hidden">
+        <h2>Users</h2>
+        <table id="usersTable" class="display">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Company</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- Posts Section -->
+      <section id="posts" class="section animate__animated animate__fadeIn hidden">
+        <h2>Posts</h2>
+        <div class="actions">
+          <input type="text" id="postSearch" placeholder="Search posts..."/>
+          <button class="btn primary" id="addPostBtn">
+            <i class="fa-solid fa-plus"></i> Add Post
+          </button>
+        </div>
+        <div id="postsList" class="posts-list"></div>
+      </section>
+
+      <!-- Favorites Section -->
+      <section id="favorites" class="section animate__animated animate__fadeIn hidden">
+        <h2>Favorites</h2>
+        <div id="favoritesList"></div>
+      </section>
+    </main>
+  </div>
+  <!-- Vendor JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  <!-- Main JS -->
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  display: flex;
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+:root {
+  --bg: #f9f9f9;
+  --text: #222;
+  --sidebar-bg: #fff;
+  --sidebar-text: #444;
+  --primary: #4a90e2;
+  --danger: #e74c3c;
+  --card-bg: #fff;
+}
+
+body.theme-dark {
+  --bg: #1e1e2f;
+  --text: #eee;
+  --sidebar-bg: #2c2c3e;
+  --sidebar-text: #bbb;
+  --card-bg: #2b2b3b;
+}
+
+/* Loader */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.loader-overlay.hidden { display: none; }
+.spinner {
+  width: 50px; height: 50px;
+  border: 6px solid #ccc;
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* App Layout */
+.app {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  width: 220px;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ddd;
+  padding: 1rem;
+}
+.sidebar .brand {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.menu {
+  flex: 1;
+}
+.menu-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  margin: 0.2rem 0;
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.menu-item:hover,
+.menu-item.active {
+  background: var(--primary);
+  color: #fff;
+}
+.sidebar-footer {
+  font-size: 0.75rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.topbar .search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.topbar input {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Sections */
+.section {
+  display: none;
+}
+.section.active {
+  display: block;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.card {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.card.stat h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+.card.stat p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--text);
+}
+
+/* Posts */
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.posts-list {
+  display: grid;
+  gap: 1rem;
+}
+.post-card {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
